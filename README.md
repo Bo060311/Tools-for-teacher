@@ -1,2 +1,1 @@
-Mình có tin buồn đây, hiện tại thằng dev này bị ốm sốt liệt giường nên thòi gian sẽ lùi tầm vài ngày
-Mong mọi người thông cảm, dù sao thì tui cũng buồn vì không giữ được lời hứa
+Hiện tại project này phải dời lịch sang vài ngày nữa vì thằng dev này đang hơi nguy kịch ngay ngày đầu năm, mong mọi người thông cảm
