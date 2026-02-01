@@ -36,43 +36,36 @@ class sign_up(QMainWindow):
         username = self.name1.text()
         password = self.pass1.text()
         passcofirm = self.pass_confirm.text()
-        with open("dulieu.json","r",encoding= "utf-8") as f:#lấy dữ liệu từ file dât
+        username = username.strip()
+        password = password.strip()
+        passconfirm = passcofirm.strip()
+        with open("dulieu.json","r",encoding="utf-8") as f:
             data = json.load(f)
         for u in data["user"]:
-            if u["username"] == username and u["password"] == password:#nếu tài khoản đã có thì nhắc nhở
-                self.mesg("Tài khoản đã tồn tại")
-                break
-            else:
-                try:
-                    with open("dulieu.json","r", encoding="utf-8") as f:
-                        data = json.load(f)# lấy dữ liệu
-                except (FileNotFoundError, json.JSONDecodeError):#nếu ko tìm thấy thì thôi
-                    data = {"user":[]}
-                    self.mesg("Không tìm thấy file","Lỗi")
-                    break
-                if password == passcofirm:
-                    if not len(password) > 8:
-                        self.mesg("Cần nhập hơn 8 chữ cái","Lỗi đăng nhập")
-                        break
-                    else:
-                        data2 = {
-                        "username":username,
-                        "password":password,
-                        "class":[],
-                        "hs_cc":1
-                        }#Gom username và password để tiện
-                        data["user"].append(data2)
-                        with open("dulieu.json","w", encoding="utf-8") as f:#lưu vào file dữ liệu
-                            json.dump(data,f,indent=4,ensure_ascii=False)
-                        self.mesg("Success","Thông báo")
-                        self.name1.setText("")
-                        self.pass1.setText("")
-                        self.pass_confirm.setText("")
-                        break
+            if u["username"] == username:
+                self.mesg("Tài khoản đã tồn tại","Lỗi đăng ký")
+                return
+        if password != passconfirm:
+            self.mesg("Password is not same","Lỗi đăng ký")
+            return
 
-                else:
-                    self.mesg("Password is not same","Lỗi đăng nhập")
-                    break
+        if len(password) < 8:
+            self.mesg("Cần nhập hơn 8 chữ cái","Lỗi đăng ký")
+            return
+        data["user"].append({
+        "username": username,
+        "password": password,
+        "class": [],
+        "hs_cc": 1
+        })
+
+        with open("dulieu.json","w", encoding="utf-8") as f:
+            json.dump(data,f,indent=4,ensure_ascii=False)
+
+        self.mesg("Success 🎉","Thông báo")
+        self.name1.setText("")
+        self.pass1.setText("")
+        self.pass_confirm.setText("")
 #------------------------------------------------------------------    
     def goto_signin(self):#đi đến màn hình đăng nhập
         self.sign_in.show()
@@ -122,8 +115,6 @@ class sign_in(QMainWindow):#lớp xử lí đăng nhập
                         self.pass2.setText("")
                         self.tungtool.current_user = username
                         self.tungtool.load_danh_sach()
-                        self.tungtool.play_song()
-                        self.tungtool.music(self.tungtool.volume.value())
                         self.tungtool.show()
                         self.go_to_tung()
                     else:
@@ -131,8 +122,6 @@ class sign_in(QMainWindow):#lớp xử lí đăng nhập
                         self.name2.setText("")
                         self.pass2.setText("")
                         self.mainmenu.current_user = username
-                        self.mainmenu.play_song()
-                        self.mainmenu.music(self.mainmenu.volume.value())
                         self.mainmenu.load_danh_sach()
                         self.mainmenu.show()
                         found = True
@@ -196,9 +185,6 @@ class mainmenu(QMainWindow):#lớp khởi tạo màn hình chính
         self.logout.clicked.connect(self.goto_signin)
         self.update.clicked.connect(self.tao_danh_sach)
         self.save.clicked.connect(self.luu_danh_sach)
-        self.volume.valueChanged.connect(self.music)
-        self.previous.clicked.connect(self.lui)
-        self.next.clicked.connect(self.tien)
         # self.music()
         # self.load_ds.clicked.connect(self.load_danh_sach)
         # self.load_danh_sach()
@@ -206,7 +192,7 @@ class mainmenu(QMainWindow):#lớp khởi tạo màn hình chính
         self.center()
         self.setup_time()
         self.may_tinh.clicked.connect(self.goto_cal)
-
+        self.count.clicked.connect(self.dem_gio)
         self.current_user = None 
     #------------------------------------------------------------------
     def tao_danh_sach(self):# hàm tạo danh sách lớp
@@ -235,7 +221,6 @@ class mainmenu(QMainWindow):#lớp khởi tạo màn hình chính
                 item = self.tableHocSinh.item(row, col)
                 row_list.append(item.text() if item else "")
             table_data.append(row_list)
-        print(table_data)
         with open("dulieu.json","r", encoding="utf-8") as f:    
             data = json.load(f)
         for u in data["user"]:
@@ -258,7 +243,10 @@ class mainmenu(QMainWindow):#lớp khởi tạo màn hình chính
         for u in data["user"]:
             if u["username"] == self.current_user:
                 lop = u["class"]
-        num = random.randint(1,len(lop))
+        try:
+            num = random.randint(1,len(lop))
+        except ValueError:
+            self.message("Chưa lưu danh sách")
         self.rd_out.setText(str(num))
     #------------------------------------------------------------------
     def today(self):
@@ -281,22 +269,11 @@ class mainmenu(QMainWindow):#lớp khởi tạo màn hình chính
     def goto_cal(self):
         self.calculator.show()
     #------------------------------------------------------------------
-    def lui(self):
-        self.index -= 1
-        if self.index < 0:
-            self.index = len(self.song)-1
-        self.play_song()
-    def tien(self):
-        self.index += 1
-        if self.index >= len(self.song):
-            self.index = 0
-        self.play_song()
-    def music(self,value):        
-        pygame.mixer.music.set_volume(value/100)
-    def play_song(self):
-        pygame.mixer.init()
-        pygame.mixer.music.load(self.song[self.index])
-        pygame.mixer.music.play(-1)
+    def dem_gio(self):
+        self.timer.show()
+        self.timer.raise_()          # đưa lên trên
+        self.timer.activateWindow()  # lấy focus
+
     def keyPressEvent(self, event):
         if event.key() == Qt.Key.Key_Escape:
             self.close()
@@ -314,9 +291,7 @@ class tungui(QMainWindow):
         self.update.clicked.connect(self.tao_danh_sach)
         self.logout.clicked.connect(self.goto_signin)
         self.calculator.clicked.connect(self.casio)
-        self.volume.valueChanged.connect(self.music)
-        self.previous.clicked.connect(self.lui)
-        self.next.clicked.connect(self.tien)
+        self.count.clicked.connect(self.goto_timer)
     #------------------------------------------------------------------
     def bai_tap(self):
         with open("dulieu.json","r", encoding="utf-8") as f:
@@ -399,7 +374,6 @@ class tungui(QMainWindow):
                 item = self.tableHocSinh.item(row, col)
                 row_list.append(item.text() if item else "")
             table_data.append(row_list)
-        print(table_data)
         with open("dulieu.json","r", encoding="utf-8") as f:    
             data = json.load(f)
         for u in data["user"]:
@@ -429,9 +403,9 @@ class tungui(QMainWindow):
     #------------------------------------------------------------------
     def setup_time(self):
     # Tạo timer để update mỗi giây
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.today)
-        self.timer.start(1000)  # 1000 ms = 1 giây
+        self.clock_timer = QTimer()
+        self.clock_timer.timeout.connect(self.today)
+        self.clock_timer.start(1000)  # 1000 ms = 1 giây
     #------------------------------------------------------------------
     def center(self):#Yeah, vẫn là căn giữa mành hình
         screen = QGuiApplication.primaryScreen().availableGeometry()
@@ -441,22 +415,8 @@ class tungui(QMainWindow):
     #------------------------------------------------------------------
     def casio(self):
         self.calculator.show()
-    def lui(self):
-        self.index -= 1
-        if self.index < 0:
-            self.index = len(self.song)-1
-        self.play_song()
-    def tien(self):
-        self.index += 1
-        if self.index >= len(self.song):
-            self.index = 0
-        self.play_song()
-    def music(self,value):        
-        pygame.mixer.music.set_volume(value/100)
-    def play_song(self):
-        pygame.mixer.init()
-        pygame.mixer.music.load(self.song[self.index])
-        pygame.mixer.music.play(-1)
+    def goto_timer(self):
+        self.timer.show()
 #------------------------------------------------------------------
 class credit(QMainWindow):
     def __init__(self):
@@ -465,8 +425,12 @@ class credit(QMainWindow):
         self.back.clicked.connect(self.goto_signin)
         
     def play_sound(self):
-        pygame.mixer.init()
-        pygame.mixer.music.set_volume(1)
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load("music/sans.mp3")
+        pygame.mixer.music.play()
+
+        
+        
         pygame.mixer.music.load("music/sans.mp3")
         pygame.mixer.music.play()
     def goto_signin(self):
@@ -479,9 +443,13 @@ class calculator(QMainWindow):
         super().__init__()
         uic.loadUi("current ui/calculator.ui",self)
         self.center()
+        self.sfx = [
+            pygame.mixer.Sound("music/bruh.mp3"),
+            pygame.mixer.Sound("music/trojan.mp3"),
+            pygame.mixer.Sound("music/fah.mp3"),
+        ]
         self.a = ""
-        self.music()
-        self.sfx = ["music/bruh.mp3","music/fahhhhhhhhhhhhhh.mp3","music/trojan.mp3"]
+
         self.one.clicked.connect(self.mot)#bug nặng vl
         self.two.clicked.connect(self.hai)
         self.three.clicked.connect(self.ba)
@@ -553,20 +521,13 @@ class calculator(QMainWindow):
     def xoa(self):
         self.pheptinh("X")
     #------------------------------------------------------------------
-    def music(self):
-        pygame.mixer.init()
-        pygame.mixer.music.set_volume(1)
-    def play_music(self,song):
-        
-        pygame.mixer.music.load(song)
-        pygame.mixer.music.play()
     def pheptinh(self,operation):
         if operation == "=":
             try:
                 b = eval(self.a)
                 self.result.setText(str(b))
             except (ZeroDivisionError, SyntaxError):
-                self.play_music(random.choice(self.sfx))
+                random.choice(self.sfx).play()
                 self.message("Lỗi phép tính","Oh hell nah")
                 self.a = ""
                 self.result.setText(self.a)
@@ -585,15 +546,110 @@ class calculator(QMainWindow):
         message_box.show()
         message_box.exec()
 #------------------------------------------------------------------
+class timing(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        
+        self.timer = QTimer()
+        uic.loadUi("current ui/time_test.ui",self)
+        self.time = 0
+        self.is_counting = False
+        self.our.setText("00")
+        self.minute.setText("00")
+        self.second.setText("00")
+        self.five.clicked.connect(self.five_mins)
+        self.fourty_five.clicked.connect(self.fourty_five_mins)
+        self.fifteen.clicked.connect(self.fifteen_min)
+        self.begin.clicked.connect(self.prepare)
+        self.timer.timeout.connect(self.counting)
+        self.timer_music = "music/sans.mp3"
+
+    def message(self,text):
+        message_box = QMessageBox()
+        message_box.setText(text)
+        message_box.show()
+        message_box.exec()
+    def five_mins(self):
+        self.time = 300
+        self.minute.setText("5")
+    def fourty_five_mins(self):
+        self.time = 2700
+        self.minute.setText("45")
+    def fifteen_min(self):
+        self.time = 900
+        self.minute.setText("15")
+    def prepare(self):
+        if self.time == 0:
+            try:
+                self.time = int(self.thoi_gian.text())
+            except ValueError:
+                self.message("Vui lòng chọn hoặc nhập thời gian")
+                return
+            if self.time <= 0:
+                self.message("Vui lòng chọn hoặc nhập thời gian")
+                self.time = 0
+                return
+
+
+        if self.is_counting == True:
+                self.time = 0
+                pygame.mixer.music.stop()
+                self.begin.setText("▶ Start Timer") 
+                self.our.setText("00")
+                self.minute.setText("00")
+                self.second.setText("00")
+                self.is_counting = False
+                self.timer.stop()
+                pygame.mixer.music.stop()
+        else:
+
+                self.timer.start(1000) 
+                self.is_counting = True
+                self.begin.setText("• Cancel")
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load(self.timer_music)
+                pygame.mixer.music.play(-1)  # lặp vô hạn
+
+                
+    def counting(self):
+        if not self.is_counting:
+            return
+
+        # 🔥 TRỪ TRƯỚC
+        self.time -= 1
+
+        gio = self.time // 3600
+        phut = (self.time % 3600) // 60
+        giay = self.time % 60
+
+        self.our.setText(f"{gio:02d}")
+        self.minute.setText(f"{phut:02d}")
+        self.second.setText(f"{giay:02d}")
+
+        # ⏰ HẾT GIỜ
+        if self.time <= 0:
+            self.is_counting = False
+            self.timer.stop()
+            pygame.mixer.music.stop()
+            self.begin.setText("▶ Start Timer")
+            pygame.mixer.music.stop()
+            self.message("Hết giờ, các em bỏ bút xuống")
+
+        
 if __name__ == "__main__":
     #code khởi tạo và chậy app
+    pygame.mixer.init()
+    pygame.mixer.music.set_volume(1)
+
     app = QApplication(sys.argv)
+    counting_window = timing()
     signin_window = sign_in()
     signup_window = sign_up()
     mainmenu_window = mainmenu()
     tungtool_window = tungui()
     credit_window = credit()
     casio_window = calculator()
+    
     mainmenu_window.calculator = casio_window
     tungtool_window.calculator = casio_window
     signin_window.goto_credit = credit_window
@@ -605,6 +661,9 @@ if __name__ == "__main__":
     signup_window.sign_in = signin_window
     signin_window.mainmenu = mainmenu_window
     mainmenu_window.sign_in = signin_window
+    mainmenu_window.timer = counting_window
+    tungtool_window.timer = counting_window
     signin_window.show()
+    # counting_window.show()
     app.exec()
     #buồn ngủ quá, mệt vãi
