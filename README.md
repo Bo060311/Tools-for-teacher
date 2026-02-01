@@ -1,1 +1,23 @@
-Project gần xong rồi, gần như 99,9999...% vài ngày nữa sẽ tung ra bản đầu tiên của ứng dụng này(Sorry vì delay hơi khủng khiếp)
+🎉 2Ts (Teacher’s Tools) 🎉
+🖥️ Thời đại công nghệ 5.0 rồi mà vẫn dạy học theo cách truyền thống à?
+⏰ Đã đến lúc nâng cấp cách quản lý lớp học bằng công nghệ rồi đó!
+
+🔎 2Ts ra đời để giải quyết vấn đề này – gọn gàng, tiện lợi và cực kỳ dễ dùng 💡
+📱 Với 2Ts, mọi thao tác cần thiết để quản lý một lớp học đều được tích hợp trong một ứng dụng duy nhất 🎮✨
+
+🤩 Các tính năng nổi bật của 2Ts gồm có:
+
+  📋 Danh sách lớp (STT, Họ và tên, Lớp, Ngày sinh, Bảng kiểm điểm, Chép phạt) 😇
+  
+  ⏱️ Đếm giờ (phục vụ kiểm tra, hoạt động trên lớp) 😁
+  
+  🔢 Máy tính cầm tay – nhanh gọn, khỏi lôi máy ngoài
+  
+  🎲 Gọi số ngẫu nhiên – hết lo chọn người thiên vị 😵‍💫
+  
+  🥸 Một tính năng ẩn dành cho tài khoản username đặc biệt
+  (👉 Gợi ý: sẽ “lộ diện” ngay khi mở app 👀)
+
+🛠️ Sản phẩm không có bản quyền, cho phép tùy biến, sáng tạo theo nhu cầu cá nhân
+📄 Khuyến khích sử dụng cho giáo viên chủ nhiệm để quản lý lớp hiệu quả hơn
+⚠️ Không dùng cho mục đích ghi điểm chính thức
