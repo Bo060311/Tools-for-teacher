@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>467</width>
-    <height>650</height>
+    <width>462</width>
+    <height>558</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -41,9 +41,26 @@
      }
     </string>
    </property>
-   <layout class="QVBoxLayout">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <spacer>
+     <widget class="QPushButton" name="credit_btn">
+      <property name="styleSheet">
+       <string notr="true">#credit_btn{
+background:#2563eb;
+border-radius:6px;
+padding:10px;
+}
+#credit_btn:hover{
+background:rgb(29, 80, 189);
+}</string>
+      </property>
+      <property name="text">
+       <string>Credit</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="spacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
@@ -113,13 +130,20 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string>
+         <string notr="true">
           QFrame{
            background:#020617;
            border:1px solid #1f2937;
            border-radius:12px;
           }
-          </string>
+QPushButton{
+background-color:#0F172A;
+border-radius:4px;
+border:1px solid #374151
+}
+QPushButton:hover{
+background-color:rgb(38, 59, 107)
+}</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>

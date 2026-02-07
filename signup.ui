@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>468</width>
-    <height>650</height>
+    <width>466</width>
+    <height>557</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Đăng ký</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -32,16 +35,33 @@
         border-radius:6px;
         padding:10px;
      }
-     #btnSignup{
+     #signup{
         background:#2563eb;
      }
-     #btnGoogle{
+     #had{
         background:#111827;
         border:1px solid #374151;
      }
     </string>
    </property>
-   <layout class="QVBoxLayout">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="credit_btn">
+      <property name="styleSheet">
+       <string notr="true">#credit_btn{
+background:#2563eb;
+border-radius:6px;
+padding:10px;}
+#credit_btn:hover{
+background:rgb(29, 80, 189)
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Credit</string>
+      </property>
+     </widget>
+    </item>
     <item>
      <spacer>
       <property name="orientation">
@@ -111,13 +131,21 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string>
+         <string notr="true">
            QFrame{
             background:#020617;
             border:1px solid #1f2937;
             border-radius:12px;
            }
-          </string>
+QPushButton{
+background-color:#0F172A;
+border-radius:4px;
+border: 1px solid #374151;
+}
+QPushButton:hover{
+background-color:rgb(38, 59, 107);
+}
+</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -167,19 +195,22 @@
          </item>
          <item>
           <widget class="QPushButton" name="signup">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
            <property name="text">
             <string>Đăng ký</string>
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QPushButton" name="had">
+           <property name="text">
+            <string>Đã có tài khoản? Đăng nhập</string>
+           </property>
+          </widget>
+         </item>
         </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="had">
-        <property name="text">
-         <string>Đã có tài khoản? Đăng nhập</string>
-        </property>
        </widget>
       </item>
       <item alignment="Qt::AlignHCenter">
