@@ -191,6 +191,7 @@ class mainmenu(QMainWindow):#lớp khởi tạo màn hình chính
         self.rdnum.clicked.connect(self.random)
         self.center()
         self.setup_time()
+        self.today
         self.may_tinh.clicked.connect(self.goto_cal)
         self.count.clicked.connect(self.dem_gio)
         self.current_user = None 
@@ -210,8 +211,10 @@ class mainmenu(QMainWindow):#lớp khởi tạo màn hình chính
 
             # Điền cột 1 và 2: Để trống; cột 3 điền lớp 
             self.tableHocSinh.setItem(i, 1, QTableWidgetItem(""))
-            self.tableHocSinh.setItem(i, 2, QTableWidgetItem(""))
-            self.tableHocSinh.setItem(i,3,QTableWidgetItem(str(lop)))
+            self.tableHocSinh.setItem(i, 3, QTableWidgetItem("Unknown"))
+            self.tableHocSinh.setItem(i,2,QTableWidgetItem(str(lop)))
+            self.tableHocSinh.setItem(i,4,QTableWidgetItem("Không"))
+            self.tableHocSinh.setItem(i,4,QTableWidgetItem("Không"))
     #------------------------------------------------------------------
     def luu_danh_sach(self):
         table_data = []
@@ -247,6 +250,7 @@ class mainmenu(QMainWindow):#lớp khởi tạo màn hình chính
             num = random.randint(1,len(lop))
         except ValueError:
             self.message("Chưa lưu danh sách")
+            return
         self.rd_out.setText(str(num))
     #------------------------------------------------------------------
     def today(self):
@@ -257,14 +261,14 @@ class mainmenu(QMainWindow):#lớp khởi tạo màn hình chính
         h = now.hour
         m = now.minute
         s = now.second
-        self.time.setText(f"{now.day:02d}/{now.month:02d}/{now.year}")
-        self.date.setText(f"{now.hour:02d}:{now.minute:02d}:{now.second:02d}")
+        self.time.setText(f"{day}/{month}/{year}")
+        self.date.setText(f"{h}:{m}:{s}")
     #------------------------------------------------------------------
     def setup_time(self):
     # Tạo timer để update mỗi giây
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.today)
-        self.timer.start(1000)  # 1000 ms = 1 giây
+        self.clock_time = QTimer()
+        self.clock_time.timeout.connect(self.today)
+        self.clock_time.start(1000)  # 1000 ms = 1 giây
     #------------------------------------------------------------------
     def goto_cal(self):
         self.calculator.show()
@@ -286,6 +290,7 @@ class tungui(QMainWindow):
         self.song = ["music/mood.mp3","music/Tet.mp3","music/Eiffel 65 - Blue (Da Ba Dee) (1080p_30fps_AV1-128kbit_AAC) (online-audio-converter.com).mp3","music/Forget.mp3","music/Last Christmas.mp3"]
         self.center()
         self.setup_time()
+        self.today()
         self.bt.clicked.connect(self.bai_tap)
         self.save.clicked.connect(self.luu_danh_sach)
         self.update.clicked.connect(self.tao_danh_sach)
