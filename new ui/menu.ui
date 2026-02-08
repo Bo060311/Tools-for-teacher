@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainMenu</class>
+ <widget class="QMainWindow" name="MainMenu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1150</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Menu Chính</string>
+  </property>
+
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="mainLayout">
+
+    <!-- LEFT SIDE -->
+    <item>
+     <layout class="QVBoxLayout">
+
+      <!-- QUICK BOX -->
+      <item>
+       <layout class="QHBoxLayout">
+
+        <!-- Random -->
+        <item>
+         <widget class="QGroupBox" name="randomBox">
+          <property name="title">
+           <string>Chọn số ngẫu nhiên</string>
+          </property>
+          <layout class="QVBoxLayout">
+           <item>
+            <widget class="QLabel" name="labelRandom">
+             <property name="text">
+              <string>42</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnRandom">
+             <property name="text">
+              <string>Tạo số mới</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+
+        <!-- Time -->
+        <item>
+         <widget class="QGroupBox" name="timeBox">
+          <property name="title">
+           <string>Thời gian hiện tại</string>
+          </property>
+          <layout class="QVBoxLayout">
+           <item>
+            <widget class="QLabel" name="labelTime">
+             <property name="text">
+              <string>14:30:45</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelDate">
+             <property name="text">
+              <string>Thứ Hai, 24/10/2023</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+
+       </layout>
+      </item>
+
+      <!-- CLASS LIST -->
+      <item>
+       <widget class="QGroupBox" name="groupClass">
+        <property name="title">
+         <string>Danh sách lớp</string>
+        </property>
+
+        <layout class="QVBoxLayout">
+
+         <item>
+          <layout class="QHBoxLayout">
+           <item>
+            <widget class="QLineEdit" name="className">
+             <property name="placeholderText">
+              <string>Nhập tên lớp...</string>
+             </property>
+            </widget>
+           </item>
+
+           <item>
+            <widget class="QSpinBox" name="studentCount">
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>60</number>
+             </property>
+             <property name="value">
+              <number>45</number>
+             </property>
+            </widget>
+           </item>
+
+           <item>
+            <widget class="QPushButton" name="btnSaveClass">
+             <property name="text">
+              <string>Lưu</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+
+         <item>
+          <widget class="QTableWidget" name="tableStudents">
+           <property name="columnCount">
+            <number>3</number>
+           </property>
+           <property name="rowCount">
+            <number>5</number>
+           </property>
+
+           <column>
+            <property name="text">
+             <string>STT</string>
+            </property>
+           </column>
+
+           <column>
+            <property name="text">
+             <string>Họ và Tên</string>
+            </property>
+           </column>
+
+           <column>
+            <property name="text">
+             <string>Ngày sinh</string>
+            </property>
+           </column>
+
+          </widget>
+         </item>
+
+        </layout>
+       </widget>
+      </item>
+
+     </layout>
+    </item>
+
+    <!-- RIGHT SIDE -->
+    <item>
+     <widget class="QGroupBox" name="groupSeat">
+      <property name="title">
+       <string>Sơ đồ lớp học</string>
+      </property>
+
+      <layout class="QGridLayout" name="seatGrid">
+
+       <!-- Sample seats -->
+       <item row="0" column="0">
+        <widget class="QPushButton" name="seat1">
+         <property name="text">
+          <string>HS1</string>
+         </property>
+        </widget>
+       </item>
+
+       <item row="0" column="1">
+        <widget class="QPushButton" name="seat2">
+         <property name="text">
+          <string>HS2</string>
+         </property>
+        </widget>
+       </item>
+
+       <item row="0" column="2">
+        <widget class="QPushButton" name="seat3">
+         <property name="text">
+          <string>HS3</string>
+         </property>
+        </widget>
+       </item>
+
+       <item row="1" column="0">
+        <widget class="QPushButton" name="seat4">
+         <property name="text">
+          <string>HS4</string>
+         </property>
+        </widget>
+       </item>
+
+      </layout>
+     </widget>
+    </item>
+
+   </layout>
+
+  </widget>
+ </widget>
+
+ <resources/>
+ <connections/>
+</ui>

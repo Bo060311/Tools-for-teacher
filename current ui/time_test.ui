@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>420</width>
+    <height>453</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>420</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Bộ đếm giờ</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(18, 24, 32);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>231</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white</string>
+    </property>
+    <property name="text">
+     <string>🕒 Timer</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="presetLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>150</y>
+      <width>408</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string>color: #808080; font-weight: bold; font-size: 14px;</string>
+    </property>
+    <property name="text">
+     <string>Chọn nhanh</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>170</y>
+      <width>321</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+color:white;
+border:1px solid #2C353F;
+border-radius:10px
+}
+QPushButton:hover{
+border:2px solid #4A90E2;
+color:#4A90E2
+}</string>
+    </property>
+    <widget class="QPushButton" name="five">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>5 mins</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="fourty_five">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>20</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>45 mins</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="fifteen">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>20</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>15 mins</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="begin">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>260</y>
+      <width>336</width>
+      <height>55</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+      <horstretch>3</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>55</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+color:white;
+background-color:#3E83CC;
+border: 0.5px solid #5CA8FE;
+border-radius: 10px}
+:hover{
+background-color:rgb(74, 160, 245)
+}</string>
+    </property>
+    <property name="text">
+     <string>▶ Start Timer</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="thoi_gian">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>370</y>
+      <width>301</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:1px solid grey;
+color:grey;
+border-radius:7px</string>
+    </property>
+    <property name="placeholderText">
+     <string>Nhập thời gian tự chọn(giây)</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>30</y>
+      <width>261</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QFrame" name="frame_4">
+       <property name="styleSheet">
+        <string notr="true">border-radius:20px;
+background-color: rgb(26, 33, 42);
+border: 1px solid #252D37</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QWidget" name="layoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>81</width>
+          <height>87</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLabel" name="our">
+           <property name="font">
+            <font>
+             <family>Segoe UI Variable Small Semibol</family>
+             <pointsize>40</pointsize>
+             <weight>75</weight>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color:white;
+border: 0px solid;
+background-color: transparent;
+</string>
+           </property>
+           <property name="text">
+            <string>00</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="styleSheet">
+            <string notr="true">color: #5C6370; 
+font-size: 9px; 
+font-weight: bold;
+border:0px;
+background-color:#1A212A</string>
+           </property>
+           <property name="text">
+            <string>HOURS</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="frame_2">
+       <property name="styleSheet">
+        <string notr="true">border-radius:20px;
+background-color: rgb(26, 33, 42);
+border: 1px solid #252D37</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>81</width>
+          <height>87</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLabel" name="minute">
+           <property name="font">
+            <font>
+             <family>Segoe UI Variable Small Semibol</family>
+             <pointsize>40</pointsize>
+             <weight>75</weight>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color:white;
+border: 0px solid;
+background-color: transparent;
+</string>
+           </property>
+           <property name="text">
+            <string>00</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="styleSheet">
+            <string notr="true">color: #5C6370; 
+font-size: 9px; 
+font-weight: bold;
+border:0px;
+background-color:#1A212A</string>
+           </property>
+           <property name="text">
+            <string>MINUTES</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="frame_3">
+       <property name="styleSheet">
+        <string notr="true">border-radius:20px;
+background-color: rgb(26, 33, 42);
+border: 1px solid #252D37</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>81</width>
+          <height>87</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="second">
+           <property name="font">
+            <font>
+             <family>Segoe UI Variable Small Semibol</family>
+             <pointsize>40</pointsize>
+             <weight>75</weight>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color:white;
+border: 0px solid;
+background-color: transparent;
+</string>
+           </property>
+           <property name="text">
+            <string>00</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="styleSheet">
+            <string notr="true">color: #5C6370; 
+font-size: 9px; 
+font-weight: bold;
+border:0px;
+background-color:#1A212A</string>
+           </property>
+           <property name="text">
+            <string>SECONDS</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="presetLabel_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>340</y>
+      <width>408</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string>color: #808080; font-weight: bold; font-size: 14px;</string>
+    </property>
+    <property name="text">
+     <string>Tự nhập</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>420</width>
+     <height>18</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TimerWidget</class>
+ <widget class="QWidget" name="TimerWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>420</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>420</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>420</width>
+    <height>520</height>
+   </size>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    /* Nền tổng thể mềm mại hơn */
+    QWidget#TimerWidget { 
+        background-color: #121820; 
+    }
+
+    /* Label tiêu đề */
+    QLabel { color: #E0E0E0; font-family: 'Segoe UI', sans-serif; }
+
+    /* Các ô số: Bo góc 18px, nền tối sâu */
+    QFrame#timeBox { 
+        background-color: #1A212A; 
+        border-radius: 18px; 
+        border: 1px solid #252D37;
+    }
+
+    /* Nút Start: Hiệu ứng Gradient và bóng giả bằng border */
+    QPushButton#startBtn {
+        background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #4A90E2, stop:1 #357ABD);
+        color: white;
+        border-radius: 15px;
+        font-weight: bold;
+        font-size: 15px;
+        border: 1px solid #5DA9FF;
+    }
+    QPushButton#startBtn:hover {
+        background-color: #5DA9FF;
+    }
+    QPushButton#startBtn:pressed {
+        background-color: #357ABD;
+        padding-top: 3px;
+    }
+
+    /* Các nút Preset */
+    QFrame#presetFrame {
+        background-color: #1A212A;
+        border-radius: 15px;
+        border: 1px solid #2C353F;
+    }
+    QFrame#presetFrameSelected {
+        background-color: #1A212A;
+        border-radius: 15px;
+        border: 2px solid #4A90E2;
+    }
+
+    /* Nút Reset icon */
+    QPushButton#resetBtn {
+        background-color: #1A212A;
+        border: 1px solid #2C353F;
+        border-radius: 12px;
+        color: #808080;
+    }
+    QPushButton#resetBtn:hover { color: white; border-color: #4A90E2; }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>25</number>
+   </property>
+   <property name="contentsMargins" stdset="0">
+    <number>35</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>Segoe UI,sans-serif</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>🕒 Timer</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>⋮</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="displayLayout">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QFrame" name="timeBox">
+       <property name="minimumSize">
+        <size>
+         <width>90</width>
+         <height>100</height>
+        </size>
+       </property>
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="font">
+           <font>
+            <family>Segoe UI,sans-serif</family>
+           </font>
+          </property>
+          <property name="text">
+           <string>00</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="styleSheet">
+           <string>color: #5C6370; font-size: 9px; font-weight: bold;</string>
+          </property>
+          <property name="text">
+           <string>HOURS</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>Segoe UI,sans-serif</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="timeBox">
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="font">
+           <font>
+            <family>Segoe UI,sans-serif</family>
+           </font>
+          </property>
+          <property name="text">
+           <string>15</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="styleSheet">
+           <string>color: #5C6370; font-size: 9px; font-weight: bold;</string>
+          </property>
+          <property name="text">
+           <string>MINUTES</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>Segoe UI,sans-serif</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="timeBox">
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="font">
+           <font>
+            <family>Segoe UI,sans-serif</family>
+           </font>
+          </property>
+          <property name="text">
+           <string>00</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="styleSheet">
+           <string>color: #5C6370; font-size: 9px; font-weight: bold;</string>
+          </property>
+          <property name="text">
+           <string>SECONDS</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="styleSheet">
+      <string>color: #808080; font-weight: bold;</string>
+     </property>
+     <property name="text">
+      <string>Quick Presets</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>15</number>
+     </property>
+     <item>
+      <widget class="QFrame" name="presetFrame">
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>5 min</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="presetFrameSelected">
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="styleSheet">
+           <string>color: #4A90E2; font-weight: bold;</string>
+          </property>
+          <property name="text">
+           <string>15 min</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="presetFrame">
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>45 min</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>15</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="startBtn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>55</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>▶ Start Timer</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="resetBtn">
+       <property name="minimumSize">
+        <size>
+         <width>55</width>
+         <height>55</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>⟳</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="styleSheet">
+      <string>color: #5C6370; font-size: 11px;</string>
+     </property>
+     <property name="text">
+      <string>✎ Set Custom Time</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
