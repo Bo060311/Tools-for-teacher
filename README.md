@@ -20,9 +20,11 @@
 
 🛠️ Cách chạy ứng dụng:
   🐍 Đảm bảo đã cài môi trường Python
-  📦 Đảm bảo đã cài thư viện PyQt6 và pygame
+  📦 Đảm bảo đã cài thư viện PyQt6 và pygame(pip install PyQt6; pip install pygame)
   ▶️ Chạy thôi – đơn giản vậy đó! 😎🔥
 
 👥 Contributor:
   👑 Hà Gia Bảo (hầu như là người làm hết sản phẩm này luôn 😤🔥)
   🤝 Lý Anh Hiển – hỗ trợ lưu trữ dữ liệu 💾✨(github:@ahiendz)
+  
+✨Inspired: School Manangement System(https://github.com/ahiendz/School-Management-System)
