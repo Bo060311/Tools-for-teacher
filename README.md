@@ -19,10 +19,11 @@
 ⚠️ Không dùng cho mục đích ghi điểm chính thức 
 
 🛠️ Cách chạy ứng dụng:
-  💻 Mở vscode
+  ⚒️ Mở Terminal
+  🏠 Dùng lệnh cd "<nơi chứa file main.py>"
   🐍 Đảm bảo đã cài môi trường Python
   📦 Đảm bảo đã cài thư viện PyQt6 và pygame(pip install PyQt6; pip install pygame)
-  ▶️ Chạy thôi – đơn giản vậy đó! 😎🔥
+  ▶️ python main.py – đơn giản vậy đó! 😎🔥
   *sắp tới sẽ phát hành bản exe
 
 👥 Contributor:
