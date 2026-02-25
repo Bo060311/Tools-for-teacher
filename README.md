@@ -7,17 +7,17 @@
 
 🤩 Các tính năng nổi bật của 2Ts gồm có: 👇👇
 
-  📋 Danh sách lớp (STT, Họ và tên, Lớp, Ngày sinh, Bảng kiểm điểm, Chép phạt) 
+    📋 Danh sách lớp (STT, Họ và tên, Lớp, Ngày sinh, Bảng kiểm điểm, Chép phạt) 
   
-  ⏱️ Đếm giờ (phục vụ kiểm tra, hoạt động trên lớp) 
+    ⏱️ Đếm giờ (phục vụ kiểm tra, hoạt động trên lớp) 
   
-  🔢 Máy tính cầm tay – nhanh gọn ⚡, khỏi lôi máy ngoài 
+    🔢 Máy tính cầm tay – nhanh gọn ⚡, khỏi lôi máy ngoài 
   
-  🎲 Gọi số ngẫu nhiên – hết lo chọn người thiên vị 
+    🎲 Gọi số ngẫu nhiên – hết lo chọn người thiên vị 
   
-  🥸 Một tính năng ẩn dành cho tài khoản username đặc biệt
+    🥸 Một tính năng ẩn dành cho tài khoản username đặc biệt
   
-  👉 Gợi ý: sẽ “lộ diện” ngay khi mở app 
+    👉 Gợi ý: sẽ “lộ diện” ngay khi mở app 
 
 🛠️ Sản phẩm không có bản quyền – thoải mái tùy biến, sáng tạo theo nhu cầu cá nhân 
 
@@ -27,22 +27,22 @@
 
 🛠️ Cách chạy ứng dụng:
 
-  ⚒️ Mở Terminal
+    ⚒️ Mở Terminal
   
-  🏠 Dùng lệnh cd "<nơi chứa file main.py>"
+    🏠 Dùng lệnh cd "<nơi chứa file main.py>"
   
-  🐍 Đảm bảo đã cài môi trường Python(nếu chưa thì có thể xem trên youtube)
+    🐍 Đảm bảo đã cài môi trường Python(nếu chưa thì có thể xem trên youtube)
   
-  📦 Đảm bảo đã cài thư viện PyQt6 và pygame(nếu chưa thì nhập pip install PyQt6 rồi pip install pygame)
+    📦 Đảm bảo đã cài thư viện PyQt6 và pygame(nếu chưa thì nhập pip install PyQt6 rồi pip install pygame)
   
-  ▶️ Nhập python main.py – đơn giản vậy đó! 😎🔥
+    ▶️ Nhập python main.py – đơn giản vậy đó! 😎🔥
   
-  *sắp tới sẽ phát hành bản exe
+    *sắp tới sẽ phát hành bản exe
 
 👥 Contributor:
 
-  👑 Hà Gia Bảo (hầu như là người làm hết sản phẩm này luôn 😤🔥)
+    👑 Hà Gia Bảo (hầu như là người làm hết sản phẩm này luôn 😤🔥)
   
-  🤝 Lý Anh Hiển – hỗ trợ lưu trữ dữ liệu 💾✨(github:@ahiendz)
+    🤝 Lý Anh Hiển – hỗ trợ lưu trữ dữ liệu 💾✨(github:@ahiendz)
   
 ✨Inspired: School Manangement System(https://github.com/ahiendz/School-Management-System)
